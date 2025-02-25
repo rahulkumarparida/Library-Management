@@ -83,9 +83,27 @@ body{
     padding-left: 40px;
     
 }
-::-webkit-scrollbar{
-    display: none;
-}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+
+  ::-webkit-scrollbar-track {
+    background: #6d4a25;
+  }
+  
+ 
+  ::-webkit-scrollbar-thumb {
+    background: #ffab03;
+  }
+  
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f5aa5a;
+  }
+
+
 
 .bookContainer {
     margin: 20px 0;
