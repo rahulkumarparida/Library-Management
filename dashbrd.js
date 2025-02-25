@@ -8,10 +8,16 @@ console.log(dsh_log_data.SignupData);
 
 dsh_user_name.innerText = dsh_log_data.SignupData.Usename.toUpperCase() 
 dsh_email.innerText = dsh_log_data.SignupData.Email
+let accessData = JSON.parse(localStorage.getItem("LoggedData"))
 
-let BOOKdata = JSON.parse(localStorage.getItem("LoggedData"));
-let ArrOFDATA = BOOKdata.books
-// console.log(BOOKdata.books);
+let login_VAL = accessData.TorF
+if (login_VAL == true) {
+  let username =  accessData.LoginData.Name
+  let LoggBdata = JSON.parse(localStorage.getItem(`${username}data`)) //
+    let BOOKdata = LoggBdata.books
+let ArrOFDATA = BOOKdata
+console.log(ArrOFDATA);
+
 
 
 
@@ -19,7 +25,6 @@ function ADdUITask(bookInfo , idx){
 // Create the main container
 const bookContainer = document.createElement('div');
 bookContainer.classList.add('bookContainer');
-
 // Create the image container
 const imgContainer = document.createElement('div');
 imgContainer.id = 'img';
@@ -28,69 +33,48 @@ img.src = './Images/dsh_book_icon.png';
 img.alt = 'Book Icon';
 img.height = 60;
 imgContainer.appendChild(img);
-
 // Create the info container
 const bookInfoContainer = document.createElement('div');
 bookInfoContainer.classList.add('dsh_book_info');
-
 // Create the book name container
 const bookNameDiv = document.createElement('div');
 bookNameDiv.id = 'dsh_bookName';
 const bookNamePara = document.createElement('p');
 bookNamePara.id = 'b_name';
 bookNamePara.textContent = bookInfo;
-bookNameDiv.appendChild(bookNamePara);
-
+bookNameDiv.appendChild(bookNamePara)
 // Create the button container
 const btnContainer = document.createElement('div');
 btnContainer.id = 'dsh_btn';
-
 // Return button
 const returnBtn = document.createElement('button');
 returnBtn.classList.add('styled-btn');
 returnBtn.id = 'return';
 returnBtn.textContent = 'Return';
-
 returnBtn.setAttribute("id" , idx)
 // console.log(books);
-
-let log =  JSON.parse(localStorage.getItem("LoggedData"));
-let booksArr = log.books
-
 returnBtn.addEventListener("click" , (e)=>{
-
+    // display removed success
     let innerDiv = e.target.parentNode
     let containerDIv = innerDiv.parentNode
     let mainDIv = containerDIv.parentNode
-    // console.log(containerDIv)
+    console.log(containerDIv)
     mainDIv.remove()
 
-
-
-   let ident =  returnBtn.getAttribute("id")
-
+     
+// now array remove fromn localstorage
+   let ident =  e.target.getAttribute("id")
     console.log(ident , " ident");
-    
-     let filterBookARR =  booksArr.filter((ele , index)=>{ return index == ident})
-  console.log(filterBookARR , " after filter");
-
-    // log.books = filterBookARR
-       console.log(log.books , " left Book");
-       booksArr = log.filterBookARR
-       log.books = booksArr
-        localStorage.setItem("LoggedData" , JSON.stringify(log) )
-    
-
+    let filterARR = ArrOFDATA.filter((ele , idx)=>{
+        console.log(idx , "  === ", ident);
+        
+        return idx != ident
+    })
+    LoggBdata.books = filterARR
+    localStorage.setItem(`${username}data` , JSON.stringify(LoggBdata) )//!
+    location.reload()
 
 })
-
-
-
-
-
-
-
-
 // Extend button
 const extendBtn = document.createElement('button');
 extendBtn.classList.add('styled-btn');
@@ -115,7 +99,12 @@ Cart.appendChild(bookContainer);
 
 }
 
+let GoBack = document.querySelector(".goback")
 
+GoBack.addEventListener("click" , (e)=>{
+    window.location.replace("./index.html");
+e.preventDefault()
+})
 
 if (ArrOFDATA) {
     ArrOFDATA.forEach((element , index) => {
@@ -124,5 +113,7 @@ if (ArrOFDATA) {
         ADdUITask(element.BookData , index)
         });
 
+
+}
 
 }
