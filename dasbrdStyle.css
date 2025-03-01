@@ -212,3 +212,175 @@ body{
         justify-content: center;
     }
 }
+/*Responsiveness to the Dashboard*/
+@media (max-width: 1024px) {
+    .Navbar {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .icon {
+        margin: 10px 0;
+    }
+
+    .button {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .dashboardBTN, .log_signUp {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .srch_container {
+        padding-left: 20px;
+        justify-content: center;
+    }
+
+    input {
+        width: 80%;
+        max-width: 400px;
+    }
+
+    #cardContainer {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    .bookContainer {
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .dsh_book_info {
+        flex-direction: column;
+        padding-left: 0;
+        text-align: center;
+    }
+
+    #img {
+        width: 60%;
+        margin-bottom: 15px;
+    }
+
+    #dsh_btn {
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .Navbar {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .icon img {
+        height: 30px;
+    }
+
+    .dashboardBTN > button, .log_signUp > button {
+        width: 90px;
+        height: 30px;
+    }
+
+    .srch_container {
+        padding-left: 10px;
+    }
+
+    input {
+        width: 90%;
+    }
+
+    .pfp img {
+        height: 100px;
+        border-radius: 50%;
+    }
+
+    .Pinfo h1 {
+        font-size: 20px;
+    }
+
+    .Pinfo h3 {
+        font-size: 14px;
+    }
+
+    .Cart {
+        padding-left: 10px;
+    }
+
+    .bookContainer {
+        padding: 10px;
+        width: 95%;
+    }
+
+    .dsh_book_info {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    #img {
+        width: 70%;
+    }
+
+    .styled-btn {
+        width: 80%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .icon img {
+        height: 25px;
+    }
+
+    .dashboardBTN > button, .log_signUp > button {
+        width: 80px;
+        height: 25px;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    .pfp img {
+        height: 80px;
+    }
+
+    .Pinfo h1 {
+        font-size: 18px;
+    }
+
+    .Pinfo h3 {
+        font-size: 12px;
+    }
+
+    .Cart {
+        height: 300px;
+    }
+
+    .bookContainer {
+        width: 100%;
+        padding: 8px;
+    }
+
+    #img {
+        width: 80%;
+    }
+
+    .styled-btn {
+        width: 90%;
+    }
+}
