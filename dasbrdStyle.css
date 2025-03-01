@@ -18,7 +18,7 @@ body{
  padding-left: 20px;
 }
 .goback{
-   /* font-size: 70px; */
+   
    color: #2f1a1a;
    opacity: 90%;
 
@@ -191,6 +191,21 @@ body{
 }
 
 @media (max-width: 768px) {
+    .goback{
+        height: 50px;
+       padding: 5px;
+       margin: 0;
+    }
+    .pfp{
+        margin-top: 60px;
+        margin-left: 90px;
+        height: 80px;
+      
+    }
+    .Pinfo{
+        margin-left: 80px;
+    }
+
     .bookContainer {
         margin: 0 -20px;
         margin-bottom: 20px;

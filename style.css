@@ -200,3 +200,97 @@ text-decoration: none;
     opacity: 1;
    }
   
+/* Responsiveness */
+   @media (max-width: 768px){
+
+    .Navbar{
+   
+        width: 95%;
+        height: 60px;
+        display:flex ;
+        
+        justify-content: space-between;
+    }
+  
+    .icon{
+        margin-left: 10px;
+    }
+    .icon > img {
+        height:40px;
+    }
+    .empty{
+        width: 75%;
+    }
+    .dashboardBTN{
+    
+        margin-right: 20px;
+    }
+    .log_signUp{
+    gap: 20px;
+    
+    }
+    
+    
+    
+    .dashboardBTN > button{
+        width: 80px;
+        height: 30px;
+    }
+   
+    button{
+        font-size: x-small;
+    }
+    a{
+        font-size: smaller;
+    }
+
+
+    .srch_container{
+        padding-left: 50px;
+        height: 10%;
+    }
+    
+ input {
+   
+    width: 200px;
+    padding-left: 20px;
+  
+}
+
+
+
+
+
+
+
+#cardContainer{
+    max-height: 650px;
+    padding: 30px;
+  
+}
+
+
+
+
+.card {
+   
+    height: 250px;
+  
+    overflow: hidden;
+   }
+   
+   .card-details {
+   
+    height: 20%;
+    gap: .5em;
+  
+    
+   }
+   
+   #card_button {
+    width: 100%;
+    padding-bottom: 50px;
+   }
+
+  
+   }
