@@ -199,4 +199,112 @@ text-decoration: none;
     transform: translate(-50%, 50%);
     opacity: 1;
    }
-  
+  /* Responsive for smaller screens */
+@media screen and (max-width: 1024px) {
+    .Navbar {
+        width: 100%;
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    .icon {
+        margin-left: 0;
+    }
+
+    .button {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .dashboardBTN,
+    .log_signUp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dashboardBTN > button,
+    .log_signUp > button {
+        width: 120px;
+    }
+
+    .srch_container {
+        padding-left: 10px;
+    }
+
+    input {
+        width: 80%;
+    }
+
+    #cardContainer {
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 600px;
+    }
+}
+
+/* Responsive for mobile screens */
+@media screen and (max-width: 600px) {
+    .Navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .icon {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .dashboardBTN,
+    .log_signUp {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .dashboardBTN > button,
+    .log_signUp > button {
+        width: 100%;
+        max-width: 200px;
+        margin-bottom: 5px;
+    }
+
+    .srch_container {
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .src_bar {
+        width: 90%;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    #cardContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    .text-title {
+        font-size: 24px;
+    }
+
+    .text-body {
+        font-size: 18px;
+    }
+}
