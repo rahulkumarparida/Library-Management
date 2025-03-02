@@ -4,16 +4,16 @@ let LogBoolean = Logdata?Logdata.TorF:false;
 let Container = document.getElementById("Container")
 console.log(LogBoolean);    
 let PFP = document.getElementById("log_signUp") 
-
-
+function Logout(e) {
+    let Logdata = JSON.parse(localStorage.getItem("LoggedData"))
+      Logdata.TorF = false
+      console.log(Logdata.TorF , " the given value ");
+      localStorage.setItem("LoggedData" , JSON.parse(Logdata.TorF))
+         location.reload()
+ }
+import { addBooks } from "./book.js";
 // Log out Function
-function Logout() {
-   let Logdata = JSON.parse(localStorage.getItem("LoggedData"))
-     Logdata.TorF = false
-     console.log(Logdata.TorF , " the given value ");
-     localStorage.setItem("LoggedData" , JSON.parse(Logdata.TorF))
-        location.reload()
-}
+
 
 async function BooksName(name){
     let API =await fetch(`https://openlibrary.org/search.json?q=${name}`)
@@ -56,37 +56,8 @@ addButton.addEventListener("click" , (e)=>{
     let text =Cont_div.slice(0,-3)
     
     console.log(text);
-    
-    function addBooks(bookdata , key) {
-        let accessData = JSON.parse(localStorage.getItem("LoggedData"))
-
-        let login_VAL = accessData.TorF
-        if (login_VAL == true) {
-          let username =  accessData.LoginData.Name
-          let LoggBdata = JSON.parse(localStorage.getItem(`${username}data`)) //
-       
-       if (!LoggBdata.books) {
-        LoggBdata.books = []
-        // let bookKEY = `book${key}`
-
-        let BOOK = { BookData : bookdata}
-        LoggBdata.books.push(BOOK)
-        localStorage.setItem(`${username}data` , JSON.stringify(LoggBdata) ) //
-    
-       } else {
-        //  let bookKEY = `book${key}`
-
-        let BOOK = { BookData : bookdata}
-        LoggBdata.books.push(BOOK)
-        localStorage.setItem(`${username}data` , JSON.stringify(LoggBdata) )//
-    
-        console.log(LoggBdata , " inside addBOOK " , LoggBdata.books , " from the button");
-       }
-    }
-
-            
-    }
-    addBooks(text , idx+1)
+ 
+    addBooks(text)
    
      })
 
@@ -130,8 +101,16 @@ if (LogBoolean == true) {
     })
   console.log("Done");
     document.getElementById("MainPage").style.display = "block"
-    PFP.style.display = "block"
-    PFP.innerHTML = `<button style="margin-top:15px ;" onclick="Logout()">LOG-OUT</button>`
+    // PFP.style.display = "block"
+    let Login_BTN = document.getElementById("login")
+    let SignUp_BTN = document.getElementById("signUp")
+    Login_BTN.style.display = "none"
+    SignUp_BTN.style.display = "none"
+    let button_after = document.createElement("button")
+    button_after.innerText = "LOG-OUT"
+    button_after.onclick =Logout;
+    PFP.appendChild(button_after)
+    
    
 
    
