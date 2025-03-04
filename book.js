@@ -9,28 +9,19 @@ export function addBooks(bookdata) {
   let login_VAL = accessData.TorF;
   if (login_VAL == true) {
     let username = accessData.LoginData.Name;
-    let LoggBdata = JSON.parse(localStorage.getItem(`${username}data`)); 
+    let LoggBdata = JSON.parse(localStorage.getItem(`${username}data`));
 
     if (!LoggBdata.books) {
       LoggBdata.books = [];
-  
 
       let BOOK = { BookData: bookdata };
       LoggBdata.books.push(BOOK);
-      localStorage.setItem(`${username}data`, JSON.stringify(LoggBdata)); 
+      localStorage.setItem(`${username}data`, JSON.stringify(LoggBdata));
     } else {
-      
-
       let BOOK = { BookData: bookdata };
       LoggBdata.books.push(BOOK);
-      localStorage.setItem(`${username}data`, JSON.stringify(LoggBdata)); 
+      localStorage.setItem(`${username}data`, JSON.stringify(LoggBdata));
 
-      console.log(
-        LoggBdata,
-        " inside addBOOK ",
-        LoggBdata.books,
-        " from the button"
-      );
     }
   }
 }
@@ -73,10 +64,8 @@ function CardUI(Book, Author) {
   button.addEventListener("click", (e) => {
     let btn_Node = e.target.parentNode;
     let mainNode = btn_Node.parentNode.textContent.slice(0, -4);
-    console.log(mainNode);
     let UserData = JSON.parse(localStorage.getItem("LoggedData"));
     let Uname = UserData.LoginData.name;
-    let ARRofBooks = JSON.parse(localStorage.getItem(`${Uname}data`));
     addBooks(mainNode);
   });
 
@@ -85,7 +74,6 @@ function CardUI(Book, Author) {
   card.appendChild(desc);
   card.appendChild(goCorner);
   card.appendChild(btnContainer);
-
 
   return card;
 }
@@ -104,7 +92,6 @@ cardData("horror")
   })
   .then((res) => {
     for (let i = 0; i < NumOfBooks; i++) {
-     
       HorrorGenre.appendChild(CardUI(res[i].title, res[i].author_name));
     }
     return res;
@@ -120,7 +107,6 @@ cardData("thriller")
   })
   .then((res) => {
     for (let i = 0; i < NumOfBooks; i++) {
-     
       ThrillerGenre.appendChild(CardUI(res[i].title, res[i].author_name));
     }
     return res;
@@ -136,7 +122,6 @@ cardData("Love")
   })
   .then((res) => {
     for (let i = 0; i < NumOfBooks; i++) {
-    
       RomanceGenre.appendChild(CardUI(res[i].title, res[i].author_name));
     }
     return res;
@@ -153,7 +138,6 @@ cardData("adventure")
   })
   .then((res) => {
     for (let i = 0; i < NumOfBooks; i++) {
-     
       AdventureGenre.appendChild(CardUI(res[i].title, res[i].author_name));
     }
     return res;
@@ -163,12 +147,10 @@ cardData("adventure")
     return err;
   });
 
-
-let back = document.getElementById("Book_goback")
+let back = document.getElementById("Book_goback");
 if (back) {
-    
-back.addEventListener("click" , (e)=>{
+  back.addEventListener("click", (e) => {
     window.location.replace("./index.html");
-    e.preventDefault()
-})
+    e.preventDefault();
+  });
 }

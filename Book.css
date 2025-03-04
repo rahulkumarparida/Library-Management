@@ -1,273 +1,282 @@
-*{
-    margin: 0;
-    padding: 0;
-    /* border: 1px solid brown; */
-}
-body{
-  
-    background-color:#3e2f2f;
-    color:  white;
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    justify-content: space-between;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-div{
-margin-bottom: 10px;
+body {
+  background-color: #3e2f2f;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: space-between;
 }
-.back{
+
+div {
+  margin-bottom: 10px;
+}
+.back {
   padding-left: 1350px;
- }
- #Book_goback{
-  
-    color: #2f1a1a;
-    opacity: 90%;
- 
- }
- 
- #Book_goback {
-     position: absolute;
-     display: inline-block;
-     margin: 15px;
-     padding: 15px 30px;
-     text-align: center;
-     font-size: 18px;
-     letter-spacing: 1px;
-     text-decoration: none;
-     color: #f8f8f8;
-     background: transparent;
-     cursor: pointer;
-     transition: ease-out 0.5s;
-     border: 2px solid #ffab03;
-     border-radius: 10px;
-     box-shadow: inset 0 0 0 0 #6d4a25;
-   }
-   
-   #Book_goback:hover {
-     color: white;
-     box-shadow: inset 0 -100px 0 0 #6d4a25;
-   }
-   
-   #Book_goback:active {
-     transform: scale(0.9);
-   }
-
-
-
-
-
-.book_conatainer{
-    height: 100vh;
-    width: 100vw;
-    
 }
-.ForYouBooks{
-    padding-left: 20px;
-    height: 10vh;
-    display: flex;
-    align-items: center;
+#Book_goback {
+  color: #2f1a1a;
+  opacity: 90%;
 }
 
-.ForYouBooks > p{
-    font-size: xx-large;
-    font-family: fantasy;
+#Book_goback {
+  position: absolute;
+  display: inline-block;
+  margin: 15px;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #f8f8f8;
+  background: transparent;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border: 2px solid #ffab03;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 0 #6d4a25;
 }
-.horror , .thriller , .Love , .adventure{
-    padding-left: 20px;
-    font-size: x-large;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-weight: 300;
-    display: flex;
-    flex-direction: column;
 
+#Book_goback:hover {
+  color: white;
+  box-shadow: inset 0 -100px 0 0 #6d4a25;
 }
-/* .horror{}
-.thriller{}
-.Love{}
-.adventure{} */
 
+#Book_goback:active {
+  transform: scale(0.9);
+}
 
-#Cardhrrr , #Cardthr , #Cardslov , #CardsAdv {
-    /* border: 1px solid green; */
-    display: flex;
-    justify-content: space-between;
+.book_conatainer {
+  height: 100vh;
+  width: 100vw;
+}
+.ForYouBooks {
+  padding-left: 20px;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+}
+
+.horror > p,
+.thriller > p,
+.Love > p,
+.adventure > p {
+  padding-left: 20px;
+  background-color: #90581c;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: x-large;
+}
+.ForYouBooks > p {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 800;
+  font-size: 50px;
+}
+.horror,
+.thriller,
+.Love,
+.adventure {
+  font-size: x-large;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+}
+
+#Cardhrrr,
+#Cardthr,
+#Cardslov,
+#CardsAdv {
+  display: flex;
+  justify-content: space-between;
 }
 
 .card-title {
-    color: #262626;
-    font-size: 1em;
-    /* line-height: normal; */
-    font-weight: 700;
-    margin-bottom: 0.5em;
-  }
-  
-  .small-desc {
-    font-size: 0.7em;
-    font-weight: 800;
-    /* line-height: 1.5em; */
-    color: #452c2c;
-  }
-  
+  color: #262626;
+  font-size: 1em;
 
-  
-  .go-corner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    width: 2em;
-    height: 2em;
-    overflow: hidden;
-    top: 0;
-    right: 0;
-    background: linear-gradient(135deg, #ffda44, #f67f00);
-    border-radius: 0 4px 0 32px;
-  }
-  
-  .go-arrow {
-    margin-top: -4px;
-    margin-right: -4px;
-    color: white;
-    font-family: courier, sans;
-  }
-  .book_btn{
-    border: none;
-    border-radius: 15px;
-    background-color: #452c2c;
-    color: white;
-    box-shadow: 5px 5px 0 #ffab03;
-        width: 100px;
-        height: 30px;
-  }
-  .card {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    position: relative;
-    width: 200px;
-    /* height: 150px; */
-    background-color: #6d4a25;
-    border-radius: 10px;
-    padding: 2em 1.2em;
-    margin: 12px;
-    text-decoration: none;
-    z-index: 0;
-    /* overflow: hidden; */
-    background: linear-gradient(to bottom, #ffab03, #ffab03);
-    font-family: Arial, Helvetica, sans-serif;
-    transition: all ease 0.3s;
-  }
-  ::-webkit-scrollbar{
-    display: none;
-  }
-  .card:before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    top: -16px;
-    right: -16px;
-    background: linear-gradient(135deg, #6d4a25, #ffa748);
-    /* height: 25px; */
-    width: 25px;
-    border-radius: 32px;
-    transform: scale(1);
-    transform-origin: 40% 40%;
-    transition: transform 0.35s ease-out;
-  }
-  
-  
-  .card:hover{
-    box-shadow: 10px 10px 0 #ffab03;
-    background: linear-gradient(135deg, #d7750c, #90581c);
-  }
-  .card:hover .small-desc {
-    transition: all 0.5s ease-out;
-    color: rgba(255, 255, 255, 0.8);
-    
-  }
-  
-  .card:hover .card-title {
-    transition: all 0.5s ease-out;
-    color: #ffffff;
-  }
-  
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
 
+.small-desc {
+  font-size: 0.7em;
+  font-weight: 800;
 
-  
+  color: #452c2c;
+}
+
+.go-corner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  background: linear-gradient(135deg, #ffda44, #f67f00);
+  border-radius: 0 4px 0 32px;
+}
+
+.go-arrow {
+  margin-top: -4px;
+  margin-right: -4px;
+  color: white;
+  font-family: courier, sans;
+}
+.book_btn {
+  border: none;
+  border-radius: 15px;
+  background-color: #452c2c;
+  color: white;
+  box-shadow: 5px 5px 0 #ffab03;
+  width: 100px;
+  height: 30px;
+}
+.card {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  position: relative;
+  width: 200px;
+
+  background-color: #6d4a25;
+  border-radius: 10px;
+  padding: 2em 1.2em;
+  margin: 12px;
+  text-decoration: none;
+  z-index: 0;
+
+  background: linear-gradient(to bottom, #ffab03, #ffab03);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: all ease 0.3s;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.card:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -16px;
+  right: -16px;
+  background: linear-gradient(135deg, #6d4a25, #ffa748);
+
+  width: 25px;
+  border-radius: 32px;
+  transform: scale(1);
+  transform-origin: 40% 40%;
+  transition: transform 0.35s ease-out;
+}
+
+.card:hover {
+  box-shadow: 10px 10px 0 #ffab03;
+  background: linear-gradient(135deg, #d7750c, #90581c);
+}
+.card:hover .small-desc {
+  transition: all 0.5s ease-out;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.card:hover .card-title {
+  transition: all 0.5s ease-out;
+  color: #ffffff;
+}
+
 /*Responsiveness to Book html*/
 @media (max-width: 1024px) {
   .back {
-      padding-left: 0;
-      text-align: center;
+    padding-left: 10px;
+    text-align: center;
   }
 
   .ForYouBooks {
-      text-align: center;
-      padding-left: 0;
+    text-align: center;
+    padding-left: 20px;
   }
 
-  .horror, .thriller, .Love, .adventure {
-      padding-left: 10px;
-      font-size: large;
+  .horror,
+  .thriller,
+  .Love,
+  .adventure {
+    padding-left: 10px;
+    font-size: large;
   }
 
-  #Cardhrrr, #Cardthr, #Cardslov, #CardsAdv {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
+  #Cardhrrr,
+  #Cardthr,
+  #Cardslov,
+  #CardsAdv {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
   }
 
   .card {
-      width: 160px;
-      padding: 1.5em;
+    width: 160px;
+    padding: 60px;
   }
 }
 
 @media (max-width: 768px) {
   .ForYouBooks p {
-      font-size: x-large;
+    font-size: x-large;
   }
 
-  .horror, .thriller, .Love, .adventure {
-      font-size: medium;
+  .horror,
+  .thriller,
+  .Love,
+  .adventure {
+    font-size: medium;
   }
 
   .card {
-      width: 140px;
-      padding: 1.2em;
+    width: 140px;
+    padding: 5px;
   }
 
   .book_btn {
-      width: 90px;
-      height: 28px;
-      font-size: 0.8em;
+    width: 90px;
+    height: 28px;
+    font-size: 0.8em;
+  }
+  #Book_goback {
+    margin: 20px;
+    padding: 10px 10px;
+    font-size: 16px;
   }
 }
 
 @media (max-width: 480px) {
   body {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   #goback {
-      margin: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
   }
 
   .ForYouBooks p {
-      font-size: large;
+    font-size: medium;
   }
 
   .card {
-      width: 120px;
-      padding: 1em;
+    width: 120px;
+    padding: 5px;
   }
 
   .book_btn {
-      width: 80px;
-      height: 25px;
-      font-size: 0.7em;
+    width: 70px;
+    height: 25px;
+    font-size: 0.7em;
   }
 }

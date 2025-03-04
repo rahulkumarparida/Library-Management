@@ -1,41 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="SignUpStyles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="SignUpStyles.css" />
     <title>Sign In Page</title>
-    <link rel="icon" type="image/x-icon" href="/Images/icon1.png">
-</head>
-<body>
+    <link rel="icon" type="image/x-icon" href="/Images/icon1.png" />
+  </head>
+  <body>
     <div class="container">
-        <div class="imgConatiner">
-            <img src="./Images/SignUpPageImage.jpg" alt="Image is not Availiable">
+      <div class="imgConatiner">
+        <img src="./Images/SignUpPageImage.jpg" alt="Image is not Availiable" />
+      </div>
+      <div class="dataConatiner">
+        <div id="head"><h1>Sign-Up Page</h1></div>
+        <div class="subhead">
+          <p>Enter Your Details to create your Account</p>
         </div>
-        <div class="dataConatiner">
-            <div id="head"><h1>Sign-Up Page</h1></div>
-            <div class="subhead"><p>Enter Your Details to create your Account</p></div>
-            <div class="input">
-                <form action="" id="Form" class="form">
-                 
-                   <div class="Uname">
-                    <input id="Uname" placeholder="Create a Username"  type="text" required >
-                   </div>
-                    <div class="email">
-                        <input id="Email" placeholder="Enter your mail" type="email" required>
-                    </div>
-                    <div class="password">
-                        <input id="password" placeholder="Create a Password " type="password" required>
-                    </div>
-                    <div class="btn">
-                       
-                        <button id="SignUp_Btn" type="button">Sign-Up</button>
-                        <p>Have an Account?? <a href="./Login.html">Log-in</a></p>
-                    </div>
-                </form>
+        <div class="input">
+          <form action="" id="Form" class="form">
+            <div class="Uname">
+              <input
+                id="Uname"
+                placeholder="Create a Username"
+                type="text"
+                required
+              />
             </div>
+            <div class="email">
+              <input
+                id="Email"
+                placeholder="Enter your mail"
+                type="email"
+                required
+              />
+            </div>
+            <div class="password">
+              <input
+                id="password"
+                placeholder="Create a Password "
+                type="password"
+                required
+              />
+            </div>
+            <div class="btn">
+              <button id="SignUp_Btn" type="button">Sign-Up</button>
+              <p>Have an Account?? <a href="./Login.html">Log-in</a></p>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
     <script src="./SignUp.js"></script>
-</body>
+  </body>
 </html>
