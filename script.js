@@ -50,7 +50,7 @@ function CardsUI(book, author, idx) {
   addButton.addEventListener("click", (e) => {
     let Cont_div = e.target.closest("div").textContent;
     let text = Cont_div.slice(0, -3);
-
+   alert("Book Added Successfully");
     addBooks(text);
   });
 
