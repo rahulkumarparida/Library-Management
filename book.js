@@ -55,18 +55,19 @@ function CardUI(Book, Author) {
   btnContainer.classList.add("btn");
 
   // Create button
-  const button = document.createElement("button");
-  button.type = "button";
-  button.textContent = "ADD";
-  btnContainer.appendChild(button);
-  button.classList.add("book_btn");
+  const Addbutton = document.createElement("button");
+  Addbutton.type = "button";
+  Addbutton.textContent = "ADD";
+  btnContainer.appendChild(Addbutton);
+  Addbutton.classList.add("book_btn");
 
-  button.addEventListener("click", (e) => {
+  Addbutton.addEventListener("click", (e) => {
     let btn_Node = e.target.parentNode;
     let mainNode = btn_Node.parentNode.textContent.slice(0, -4);
     let UserData = JSON.parse(localStorage.getItem("LoggedData"));
     let Uname = UserData.LoginData.name;
     addBooks(mainNode);
+    alert("Book Added Sucessfully")
   });
 
   // Append all elements to card
