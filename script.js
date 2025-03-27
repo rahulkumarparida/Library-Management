@@ -14,32 +14,46 @@ import { addBooks } from "./book.js";
 // Log out Function
 
 async function BooksName(name) {
-  let API = await fetch(`https://openlibrary.org/search.json?q=${name}`);
-  let books = await API.json();
-  return books;
+  let API = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${name}`)
+  let data = await API.json();
+  console.log(data.items[0].volumeInfo.imageLinks.thumbnail);
+  console.log(data.items[0].volumeInfo.title);
+  console.log(data.items[0].volumeInfo.authors);
+  return data;
 }
+
 
 let cardContainer = document.getElementById("cardContainer");
 
-function CardsUI(book, author, idx) {
+function CardsUI(book, author,image, idx) {
   const card = document.createElement("div");
   card.classList.add("card");
 
   const cardDetails = document.createElement("div");
   cardDetails.classList.add("card-details");
+const BookImage = document.createElement('img')
+BookImage.setAttribute('src' , image)
+BookImage.classList.add("bookImages")
+console.log('Image : ',image);
+
+const InfoDIv = document.createElement("div");
+  cardDetails.classList.add("InfoDiv");
 
   const bookTitle = document.createElement("p");
   bookTitle.classList.add("text-title");
   bookTitle.id = "bookname";
   bookTitle.textContent = book;
 
+
   const authorName = document.createElement("p");
   authorName.classList.add("text-body");
   authorName.id = "AuthorName";
   authorName.textContent = ` Author: ${author}`;
+  InfoDIv.appendChild(bookTitle);
+  InfoDIv.appendChild(authorName);
 
-  cardDetails.appendChild(bookTitle);
-  cardDetails.appendChild(authorName);
+  cardDetails.appendChild(BookImage)
+  cardDetails.appendChild(InfoDIv)
 
   const addButton = document.createElement("button");
   addButton.id = "card_button";
@@ -71,30 +85,42 @@ function srchValue() {
 
 let Name;
 if (LogBoolean == true) {
-  BooksName("The Lord of the Ring")
-    .then((result) => {
-      return result.docs;
-    })
-    .then((res) => {
-      res.forEach((element, index) => {
-        CardsUI(element.title, element.author_name, index);
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      return `ERROR : ${err}`;
+  let Genre = "Romance"
+  BooksName(Genre)
+  .then((result) => {
+    // console.log("results " ,result.items);
+    
+    return result.items;
+  })
+  .then((res) => {
+    // console.log(res[0].volumeInfo.imageLinks.thumbnail);
+    res.forEach((ele, index) => {
+     
+      
+      CardsUI(res[index].volumeInfo.title, res[index].volumeInfo.authors, res[index].volumeInfo.imageLinks.thumbnail,index);
     });
+  })
+  .catch((err) => {
+    console.log(err);
+    return `ERROR : ${err}`;
+  });
+
   search_btn.addEventListener("click", () => {
     Name = srchValue();
 
     srch_bar.value = "";
     BooksName(Name)
       .then((result) => {
-        return result.docs;
+        // console.log("results " ,result.items);
+        
+        return result.items;
       })
       .then((res) => {
-        res.forEach((element, index) => {
-          CardsUI(element.title, element.author_name, index);
+        // console.log(res[0].volumeInfo.imageLinks.thumbnail);
+        res.forEach((ele, index) => {
+         
+          
+          CardsUI(res[index].volumeInfo.title, res[index].volumeInfo.authors, res[index].volumeInfo.imageLinks.thumbnail,index);
         });
       })
       .catch((err) => {
