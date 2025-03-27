@@ -106,13 +106,23 @@ input {
   max-height: 500px;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 50px;
+  /* padding: 50px; */
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   gap: 50px;
 }
+#bookname{
+  font-size: large;
+}
+#AuthorName{
+font-size: large;
+}
+#cardContainer >p{
 
+margin-block-start: 0;
+margin-block-end: 0;
+}
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -143,11 +153,15 @@ input {
 
 .card-details {
   color: rgb(255, 255, 255);
-  height: 100%;
+  
   gap: 0.5em;
-  display: grid;
+  display: flex;
 }
-
+.bookImages{
+  margin-top: -10px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px black;
+}
 #card_button {
   transform: translate(-50%, 125%);
   width: 60%;
@@ -236,7 +250,7 @@ input {
     padding: 30px;
   }
   .card {
-    height: 250px;
+    height: 350px;
 
     overflow: hidden;
   }
@@ -252,7 +266,7 @@ input {
   }
 
   #card_button {
-    transform: translate(-50%, -60%);
+    transform: translate(-50%, -10%);
     width: 60%;
     border-radius: 1rem;
     border: none;
@@ -267,7 +281,7 @@ input {
     transition: 0.3s ease-out;
   }
   .card:hover #card_button {
-    transform: translate(-50%, 50%);
-    opacity: 0;
+    transform: translate(-50%, 10%);
+    opacity: 1;
   }
 }

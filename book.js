@@ -21,7 +21,6 @@ export function addBooks(bookdata) {
       let BOOK = { BookData: bookdata };
       LoggBdata.books.push(BOOK);
       localStorage.setItem(`${username}data`, JSON.stringify(LoggBdata));
-
     }
   }
 }
@@ -67,7 +66,7 @@ function CardUI(Book, Author) {
     let UserData = JSON.parse(localStorage.getItem("LoggedData"));
     let Uname = UserData.LoginData.name;
     addBooks(mainNode);
-    alert("Book Added Sucessfully")
+    alert("Book Added Sucessfully");
   });
 
   // Append all elements to card
@@ -80,8 +79,12 @@ function CardUI(Book, Author) {
 }
 
 async function cardData(bname) {
-  let API = await fetch(`https://openlibrary.org/search.json?q=${bname}`);
+  let API = await fetch(
+    `https://www.googleapis.com/books/v1/volumes?q=${bname}`
+  );
+
   let FetchedData = await API.json();
+  // console.log(FetchedData);
   return FetchedData;
 }
 let NumOfBooks = 6;
@@ -89,11 +92,15 @@ let NumOfBooks = 6;
 //! 1st  Horror Genre
 cardData("horror")
   .then((result) => {
-    return result.docs;
+    // console.log(result);
+
+    return result.items;
   })
   .then((res) => {
     for (let i = 0; i < NumOfBooks; i++) {
-      HorrorGenre.appendChild(CardUI(res[i].title, res[i].author_name));
+      HorrorGenre.appendChild(
+        CardUI(res[i].volumeInfo.title, res[i].volumeInfo.authors)
+      );
     }
     return res;
   })
@@ -104,11 +111,15 @@ cardData("horror")
 //! 2nd Thriller Genre
 cardData("thriller")
   .then((result) => {
-    return result.docs;
+    // console.log(result);
+
+    return result.items;
   })
   .then((res) => {
     for (let i = 0; i < NumOfBooks; i++) {
-      ThrillerGenre.appendChild(CardUI(res[i].title, res[i].author_name));
+      ThrillerGenre.appendChild(
+        CardUI(res[i].volumeInfo.title, res[i].volumeInfo.authors)
+      );
     }
     return res;
   })
@@ -119,11 +130,15 @@ cardData("thriller")
 //! 3rd Love Genre
 cardData("Love")
   .then((result) => {
-    return result.docs;
+    // console.log(result);
+
+    return result.items;
   })
   .then((res) => {
     for (let i = 0; i < NumOfBooks; i++) {
-      RomanceGenre.appendChild(CardUI(res[i].title, res[i].author_name));
+      RomanceGenre.appendChild(
+        CardUI(res[i].volumeInfo.title, res[i].volumeInfo.authors)
+      );
     }
     return res;
   })
@@ -135,11 +150,13 @@ cardData("Love")
 //! 4th Adventure Genre
 cardData("adventure")
   .then((result) => {
-    return result.docs;
+    return result.items;
   })
   .then((res) => {
     for (let i = 0; i < NumOfBooks; i++) {
-      AdventureGenre.appendChild(CardUI(res[i].title, res[i].author_name));
+      AdventureGenre.appendChild(
+        CardUI(res[i].volumeInfo.title, res[i].volumeInfo.authors)
+      );
     }
     return res;
   })
