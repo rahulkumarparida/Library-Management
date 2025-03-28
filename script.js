@@ -14,36 +14,44 @@ import { addBooks } from "./book.js";
 // Log out Function
 
 async function BooksName(name) {
-  let API = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${name}`)
+  let API = await fetch(
+    `https://www.googleapis.com/books/v1/volumes?q=${name}`
+  );
   let data = await API.json();
-  console.log(data.items[0].volumeInfo.imageLinks.thumbnail);
-  console.log(data.items[0].volumeInfo.title);
-  console.log(data.items[0].volumeInfo.authors);
+  console.log(data.items[1].volumeInfo.description);
+  // console.log(data.items[0].volumeInfo.title);
+  // console.log(data.items[0].volumeInfo.authors);
   return data;
 }
 
-
 let cardContainer = document.getElementById("cardContainer");
 
-function CardsUI(book, author,image, idx) {
+function CardsUI(book, author, image, decription, idx) {
   const card = document.createElement("div");
   card.classList.add("card");
 
   const cardDetails = document.createElement("div");
   cardDetails.classList.add("card-details");
-const BookImage = document.createElement('img')
-BookImage.setAttribute('src' , image)
-BookImage.classList.add("bookImages")
-console.log('Image : ',image);
+  const BookImage = document.createElement("img");
+  BookImage.setAttribute("src", image);
+  BookImage.classList.add("bookImages");
+  // console.log('Image : ',image);
 
-const InfoDIv = document.createElement("div");
+  const InfoDIv = document.createElement("div");
   cardDetails.classList.add("InfoDiv");
+
+  const descriptionDiv = document.createElement("div");
+  cardDetails.classList.add("descDiv");
+
+  const desc_para = document.createElement("p");
+  desc_para.classList.add("descPara")
+  desc_para.innerText = `Description : ${decription}`;
+  descriptionDiv.appendChild(desc_para);
 
   const bookTitle = document.createElement("p");
   bookTitle.classList.add("text-title");
   bookTitle.id = "bookname";
   bookTitle.textContent = book;
-
 
   const authorName = document.createElement("p");
   authorName.classList.add("text-body");
@@ -51,9 +59,9 @@ const InfoDIv = document.createElement("div");
   authorName.textContent = ` Author: ${author}`;
   InfoDIv.appendChild(bookTitle);
   InfoDIv.appendChild(authorName);
-
-  cardDetails.appendChild(BookImage)
-  cardDetails.appendChild(InfoDIv)
+  InfoDIv.appendChild(descriptionDiv);
+  cardDetails.appendChild(BookImage);
+  cardDetails.appendChild(InfoDIv);
 
   const addButton = document.createElement("button");
   addButton.id = "card_button";
@@ -64,7 +72,7 @@ const InfoDIv = document.createElement("div");
   addButton.addEventListener("click", (e) => {
     let Cont_div = e.target.closest("div").textContent;
     let text = Cont_div.slice(0, -3);
-   alert("Book Added Successfully");
+    alert("Book Added Successfully");
     addBooks(text);
   });
 
@@ -82,28 +90,37 @@ function srchValue() {
 
   return bookName;
 }
-
+function SentenceTriming(desc) {
+  
+ return desc.slice(0,100)
+}
 let Name;
 if (LogBoolean == true) {
-  let Genre = "Romance"
+  let Genre = "Romance";
   BooksName(Genre)
-  .then((result) => {
-    // console.log("results " ,result.items);
-    
-    return result.items;
-  })
-  .then((res) => {
-    // console.log(res[0].volumeInfo.imageLinks.thumbnail);
-    res.forEach((ele, index) => {
-     
-      
-      CardsUI(res[index].volumeInfo.title, res[index].volumeInfo.authors, res[index].volumeInfo.imageLinks.thumbnail,index);
+    .then((result) => {
+      // console.log("results " ,result.items);
+
+      return result.items;
+    })
+    .then((res) => {
+      // console.log(res[0].volumeInfo.imageLinks.thumbnail);
+      res.forEach((ele, index) => {
+        let description = res[index].volumeInfo.description
+        let trimedDesc = SentenceTriming(description)
+        CardsUI(
+          res[index].volumeInfo.title,
+          res[index].volumeInfo.authors,
+          res[index].volumeInfo.imageLinks.thumbnail,
+          trimedDesc,
+          index
+        );
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      return `ERROR : ${err}`;
     });
-  })
-  .catch((err) => {
-    console.log(err);
-    return `ERROR : ${err}`;
-  });
 
   search_btn.addEventListener("click", () => {
     Name = srchValue();
@@ -112,15 +129,18 @@ if (LogBoolean == true) {
     BooksName(Name)
       .then((result) => {
         // console.log("results " ,result.items);
-        
+
         return result.items;
       })
       .then((res) => {
         // console.log(res[0].volumeInfo.imageLinks.thumbnail);
         res.forEach((ele, index) => {
-         
-          
-          CardsUI(res[index].volumeInfo.title, res[index].volumeInfo.authors, res[index].volumeInfo.imageLinks.thumbnail,index);
+          CardsUI(
+            res[index].volumeInfo.title,
+            res[index].volumeInfo.authors,
+            res[index].volumeInfo.imageLinks.thumbnail,
+            index
+          );
         });
       })
       .catch((err) => {
