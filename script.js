@@ -13,12 +13,14 @@ function Logout(e) {
 import { addBooks } from "./book.js";
 // Log out Function
 
+
+
 async function BooksName(name) {
   let API = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${name}`)
   let data = await API.json();
-  console.log(data.items[0].volumeInfo.imageLinks.thumbnail);
-  console.log(data.items[0].volumeInfo.title);
-  console.log(data.items[0].volumeInfo.authors);
+  // console.log(data.items[0].volumeInfo.imageLinks.thumbnail);
+  // console.log(data.items[0].volumeInfo.title);
+  // console.log(data.items[0].volumeInfo.authors);
   return data;
 }
 
@@ -34,7 +36,7 @@ function CardsUI(book, author,image, idx) {
 const BookImage = document.createElement('img')
 BookImage.setAttribute('src' , image)
 BookImage.classList.add("bookImages")
-console.log('Image : ',image);
+
 
 const InfoDIv = document.createElement("div");
   cardDetails.classList.add("InfoDiv");
@@ -54,7 +56,7 @@ const InfoDIv = document.createElement("div");
 
   cardDetails.appendChild(BookImage)
   cardDetails.appendChild(InfoDIv)
-
+  cardDetails.classList.add('scale_animation')
   const addButton = document.createElement("button");
   addButton.id = "card_button";
   addButton.textContent = "ADD";
@@ -70,7 +72,7 @@ const InfoDIv = document.createElement("div");
 
   card.appendChild(cardDetails);
   card.appendChild(addButton);
-
+  card.classList.add('upToDown_animation')
   cardContainer.appendChild(card);
 }
 let srch_bar = document.getElementById("src_input");
@@ -82,6 +84,11 @@ function srchValue() {
 
   return bookName;
 }
+
+
+
+
+
 
 let Name;
 if (LogBoolean == true) {
@@ -139,6 +146,95 @@ if (LogBoolean == true) {
   button_after.innerText = "LOG-OUT";
   button_after.onclick = Logout;
   PFP.appendChild(button_after);
+
+// Slider
+let currentIndex = 0;
+let slideConatainer = document.getElementById('slideContainer')
+
+  // console.log(data.items[0].volumeInfo)
+
+function SliderUI(img, Bname, Author) {
+  let slide = document.createElement('div');
+  slide.classList.add('slide');
+
+  let imageDiv = document.createElement('div');
+  imageDiv.classList.add('SlideImage');
+
+  let image = document.createElement('img');
+  image.setAttribute('src', img);
+  imageDiv.appendChild(image);
+
+  let infodiv = document.createElement('div');
+  infodiv.classList.add('SlideInfo');
+
+  let p = document.createElement('p');
+  p.innerHTML = ` by ${Author}`;
+
+  let h6 = document.createElement('h6');
+  h6.innerHTML =Bname ;
+
+  let button = document.createElement('button');
+  button.innerText = "Add";
+
+  
+  button.addEventListener("click", (e) => {
+    let Cont_div = e.target.closest("div").textContent;
+    let text = Cont_div.slice(0, -3);
+    // console.log('Text',text)
+   alert("Book Added Successfully");
+    addBooks(text);
+  });
+
+
+  infodiv.appendChild(h6);
+  infodiv.appendChild(p);
+  infodiv.appendChild(button);
+
+  slide.appendChild(imageDiv);
+  slide.appendChild(infodiv);
+
+  let slideContainer = document.querySelector('.slide'); 
+  slideContainer.appendChild(slide);
+
+}
+
+
+let arra = ['HarryPotter' , 'The Lord of the rings' , 'Kimetsu no Yaiba' , 'Attack on titan']
+
+function RandomChoose(arr) {
+let random = Math.floor(Math.random() * arr.length)
+ return arr[random]
+}
+
+let Bname = RandomChoose(arra)
+console.log(Bname);
+
+let totalSlides = 0
+
+BooksName(Bname).then((result)=>{
+
+  return result.items
+}).then((result)=>{
+// console.log(result[0].volumeInfo);
+totalSlides = result.length
+for (let i = 0; i < totalSlides; i++) {
+  SliderUI( result[i].volumeInfo.imageLinks.thumbnail ,result[i].volumeInfo.title , result[i].volumeInfo.authors )
+}
+
+}).catch((err)=>{
+  console.log('Error :' , err)
+  return err
+})
+
+
+setInterval(() => {
+  currentIndex = (currentIndex +1)%totalSlides;
+  slideConatainer.style.transform = `translateX(-${currentIndex*100}%)`
+}, 3000);
+
+
+
+
 } else {
   Container.innerHTML = `<h1>Welcome to my Library!</h1>`;
   window.location.replace("./SignUp.html");

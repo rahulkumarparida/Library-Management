@@ -22,7 +22,38 @@ if (login_VAL == true) {
     const imgContainer = document.createElement("div");
     imgContainer.id = "img";
     const img = document.createElement("img");
-    img.src = "./Images/dsh_book_icon.png";
+
+    async function BooksName(name) {
+      let API = await fetch(
+        `https://www.googleapis.com/books/v1/volumes?q=${name}`
+      );
+      let data = await API.json();
+      // console.log(data.items[0].volumeInfo.imageLinks.thumbnail);
+
+      return data;
+    }
+    BooksName(bookInfo)
+      .then((result) => {
+        return result;
+      })
+      .then((res) => {
+        let src = res.items[0].volumeInfo.imageLinks.thumbnail;
+        try {
+          
+          img.src = `${src}`;
+        } catch (error) {
+          
+          img.src = "./Images/dsh_book_icon.png";
+        }
+
+        return res;
+      })
+      .catch((err) => {
+        console.log(err);
+
+        return err;
+      });
+
     img.alt = "Book Icon";
     img.height = 60;
     imgContainer.appendChild(img);
